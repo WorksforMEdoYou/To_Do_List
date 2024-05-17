@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TO-DO-LIST</title>
+    <link rel="icon" href="G:\vscode\PICTURE FOR WEB DEVELOPMENT\Untitled.jpeg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Honk&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Honk&family=Lobster&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Honk&family=Lobster&family=Sixtyfour&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Honk&family=Lobster&family=Pacifico&family=Sixtyfour&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Rubik+Glitch+Pop&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Rubik+Glitch+Pop&family=Russo+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik+Glitch+Pop&family=Russo+One&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1 class="heading">TO-DO-LIST</h1>
+    <p class="hea">Lets list what  we need to do today!</p>
+    <br>
+    <!--adding the timer-->
+    <div id="clock">
+        <h1 id="date-time"></h1>
+    </div>
+    <input type="text" id="input" placeholder="Have a list">
+    <button onclick="add()" class="ADDL">+ Add</button>
+    <h1 class="dd">YOUR LIST</h1>
+    <div class="Box"> 
+        <ul id="list">
+            <li>Hello,your list is here! <button onclick="Deleteitem(event)" class="del">Delete</button></li>
+        </ul>
+    </div>
+   
+
+    <script>
+        var ul = document.getElementById("list");
+        var inp = document.getElementById("input");
+        function add(){
+            var listitem = document.createElement("li");
+            listitem.innerHTML = inp.value + "<button onclick='Deleteitem(event)'>Delete</button>";
+            ul.append(listitem);
+        }
+        function Deleteitem(event){
+            event.target.parentElement.remove();
+        }
+        function displayISTClock() {
+            var options = {timeZone: 'Asia/Kolkata', weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true};
+            var istTime = new Date().toLocaleString('en-US', options);
+            document.getElementById('date-time').textContent = istTime;
+        }
+        // Call the function every second to update the clock
+        setInterval(displayISTClock, 1000);
+
+        // Call the function once at the start to display the current time
+        displayISTClock();
+    </script>
+    <style>
+        body{
+            background-image: linear-gradient( 108.7deg,  rgba(221,22,224,1) 11%, rgba(111,22,190,1) 88.2% );
+            background-size: cover;
+            height: 100vh;
+            display: block;
+        }
+        .heading{
+            font-family: "Honk", system-ui;
+            font-optical-sizing: auto;
+            font-weight: normal;
+            font-size: xxx-large;
+            font-style: normal;
+            color: white;
+            text-align: center;
+            letter-spacing: 0.3em;
+            line-height: 1.5;
+            height: 6vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 50px;
+        }
+        .hea{
+            color:  white;
+            font-size: 35px;
+            text-align: center;
+            letter-spacing: 0.06em;
+            line-height: 1.2;
+            font-family: "Lobster", system-ui;
+            margin-bottom: 50px;
+        }
+        #clock{
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            font-family: "Pacifico", cursive;
+            font-weight: 400;
+            font-style: normal;
+            gap: 5px;
+            margin-left: 25%;
+            margin-right: 25%;
+            height: fit-content;
+            width: fit-content;
+            color: black;
+            background-color: rgba(255, 255, 255, 0.75);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 1.0);
+            backdrop-filter: blur(10px);
+            opacity:  0.5;
+            cursor: pointer;
+        }
+        #input{
+            display: flex;
+            position: relative;
+            z-index: 0;
+            margin-top: 10vh;
+            background-color: #ffffffbf;
+            padding: 10px;
+            border-radius: 10px;
+            margin-left: 25%;
+            height: 20px;
+            width: 40%;
+            color: black;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 1.0);
+           /* font-family: "Caveat", cursive;*/
+           font-family: "Russo One", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-style: normal;
+        }
+        .ADDL{
+            height: 50px;
+            width: 100px;
+            margin-left: 25%;
+            margin-top: 30px;
+            border-radius: 50px;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.75);
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 1.0);
+            opacity: 0.7;
+            backdrop-filter: blur(10px);
+            /*font-family: "Pacifico", cursive;*/
+            font-family: "Russo One", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+        .dd{
+            text-align: center;
+            margin-top: 50px;
+            font-family: "Russo One", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-style: normal;
+            cursor:pointer;
+        }
+        .dd:hover{
+            transform: scale(1.2);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .Box{
+            font-family: "Poppins", sans-serif;
+            font-weight: 800;
+            font-style: normal;
+            text-align: center;
+            margin-top: 50px;
+            border-radius: 25px;
+            height: fit-content;
+            width: auto;
+            background-color: rgba(255, 255, 255, 0.75);
+            opacity: 0.7;
+            backdrop-filter: blur(10px);
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 1.0);
+
+        }
+        li{
+            color: black;
+            text-transform: capitalize;
+            cursor: pointer;
+            list-style-type: none;
+            transition: all 0.6s ease;
+            margin-bottom: 10px;
+        }
+        .Box > ul > li > button{
+            height: 40px;
+            width: fit-content;
+            color: red;
+            background-color: rgba(255, 255, 255, 0.75);
+            border-radius: 40%;
+            cursor: pointer;
+            transition: all 0.6s ease;
+            text-align: center;
+            font-size: large;
+            margin-left: 30px;
+        }
+        .Box > ul > li > button:hover{
+            border: 3px red solid;
+            transform: scale(1.2);
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 1.0);
+            opacity: 1;
+        }
+    </style>
+</body>
+</html>
